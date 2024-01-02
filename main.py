@@ -23,7 +23,7 @@ client = pyrogram.Client(
 
 
 @client.on_message(pyrogram.filters.chat(TARGET_CHAT_ID))
-async def message_handler(_, message: pyrogram.types.Message):
+async def target_chat_handler(_, message: pyrogram.types.Message):
     """
     Handle messages from target chat and forward this to forward chat.
 
@@ -32,6 +32,25 @@ async def message_handler(_, message: pyrogram.types.Message):
     """
 
     await message.forward(FORWARD_CHAT_ID)
+
+
+@client.on_message(pyrogram.filters.chat(FORWARD_CHAT_ID))
+async def forward_chat_handler(_, message: pyrogram.types.Message):
+    """
+    Handle messages from forward chat and forward this to target chat.
+
+    :param _:
+    :param message: Message object
+    """
+
+    if not message.reply_to_message:
+        return
+    if not message.reply_to_message.forward_from:
+        return
+    if message.reply_to_message.from_user.id != client.me.id:
+        return
+
+    await message.forward(TARGET_CHAT_ID)
 
 
 # Start client
