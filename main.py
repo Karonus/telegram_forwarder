@@ -47,6 +47,8 @@ async def forward_chat_handler(_, message: pyrogram.types.Message):
         return
     if message.reply_to_message.from_user.id != client.me.id:
         return
+    if message.from_user.id in settings.IGNORE_USERS_IDS:
+        return
 
     await forwarder.forward_messages(
         client,

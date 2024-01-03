@@ -28,8 +28,8 @@ API_HASH = os.getenv("API_HASH")
 
 TARGET_CHAT_ID = int(os.getenv("TARGET_CHAT_ID"))
 FORWARD_CHAT_ID = int(os.getenv("FORWARD_CHAT_ID"))
-
 FORWARD_ANONYMOUS = is_true(os.getenv("FORWARD_ANONYMOUS"))
+IGNORE_USERS_IDS = set(map(int, os.getenv("IGNORE_USERS_IDS", "").split()))
 
 PROXY = {
     "scheme": os.getenv("PROXY_TYPE"),
