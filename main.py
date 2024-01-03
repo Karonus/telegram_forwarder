@@ -7,6 +7,7 @@ Forward messages from chat to other chat.
 import pyrogram
 
 import settings
+import forwarder
 
 # Initialize Telegram client
 client = pyrogram.Client(
@@ -45,7 +46,13 @@ async def forward_chat_handler(_, message: pyrogram.types.Message):
     if message.reply_to_message.from_user.id != client.me.id:
         return
 
-    await message.forward(settings.TARGET_CHAT_ID)
+    await forwarder.forward_messages(
+        client,
+        chat_id=settings.TARGET_CHAT_ID,
+        from_chat_id=settings.FORWARD_CHAT_ID,
+        message_ids=message.id,
+        drop_author=settings.FORWARD_ANONYMOUS,
+    )
 
 
 # Start client
