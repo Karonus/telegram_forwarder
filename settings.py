@@ -14,7 +14,7 @@ def is_true(val: str) -> bool:
     Check a value is true or false.
 
     :param val:
-    :return:
+    :return: True if value is true, False otherwise
     """
     return val.lower() in ["true", "1", "yes", "t"]
 
