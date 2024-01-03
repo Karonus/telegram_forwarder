@@ -10,7 +10,7 @@ import settings
 
 # Initialize Telegram client
 client = pyrogram.Client(
-    "account",
+    name=settings.SESSION_NAME,
     api_id=settings.API_ID,
     api_hash=settings.API_HASH,
     proxy=settings.PROXY if settings.PROXY["scheme"] else None,
