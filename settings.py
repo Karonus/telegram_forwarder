@@ -4,8 +4,11 @@ Client settings
 
 """
 
-
 import os
+
+import dotenv
+
+dotenv.load_dotenv()
 
 SESSION_NAME = os.environ.get("SESSION_NAME", "account")
 
