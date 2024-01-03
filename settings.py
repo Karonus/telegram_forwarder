@@ -19,7 +19,7 @@ TARGET_CHAT_ID = int(os.environ.get("TARGET_CHAT_ID"))
 FORWARD_CHAT_ID = int(os.environ.get("FORWARD_CHAT_ID"))
 
 PROXY = {
-    "scheme": os.environ.get("PROXY_TYPE"),
+    "scheme": os.environ.get("PROXY_SCHEME"),
     "hostname": os.environ.get("PROXY_HOST"),
     "port": int(os.environ.get("PROXY_PORT")),
     "username": os.environ.get("PROXY_USERNAME"),
