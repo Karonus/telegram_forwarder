@@ -8,20 +8,33 @@ import os
 
 import dotenv
 
+
+def is_true(val: str) -> bool:
+    """
+    Check a value is true or false.
+
+    :param val:
+    :return:
+    """
+    return val.lower() in ["true", "1", "yes", "t"]
+
+
 dotenv.load_dotenv()
 
-SESSION_NAME = os.environ.get("SESSION_NAME", "account")
+SESSION_NAME = os.getenv("SESSION_NAME", "account")
 
-API_ID = int(os.environ.get("API_ID"))
-API_HASH = os.environ.get("API_HASH")
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
 
-TARGET_CHAT_ID = int(os.environ.get("TARGET_CHAT_ID"))
-FORWARD_CHAT_ID = int(os.environ.get("FORWARD_CHAT_ID"))
+TARGET_CHAT_ID = int(os.getenv("TARGET_CHAT_ID"))
+FORWARD_CHAT_ID = int(os.getenv("FORWARD_CHAT_ID"))
+
+FORWARD_ANONYMOUS = is_true(os.getenv("FORWARD_ANONYMOUS"))
 
 PROXY = {
-    "scheme": os.environ.get("PROXY_SCHEME"),
-    "hostname": os.environ.get("PROXY_HOST"),
-    "port": int(os.environ.get("PROXY_PORT")),
-    "username": os.environ.get("PROXY_USERNAME"),
-    "password": os.environ.get("PROXY_PASSWORD"),
+    "scheme": os.getenv("PROXY_SCHEME"),
+    "hostname": os.getenv("PROXY_HOST"),
+    "port": int(os.getenv("PROXY_PORT")),
+    "username": os.getenv("PROXY_USERNAME"),
+    "password": os.getenv("PROXY_PASSWORD"),
 }
