@@ -15,6 +15,8 @@ client = pyrogram.Client(
     api_id=settings.API_ID,
     api_hash=settings.API_HASH,
     proxy=settings.PROXY if settings.PROXY["scheme"] else None,
+    device_model="PC",
+    system_version="Forwarder bot",
 )
 
 
