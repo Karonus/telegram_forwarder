@@ -32,7 +32,7 @@ FORWARD_CHAT_ID = int(os.getenv("FORWARD_CHAT_ID"))
 FORWARD_ANONYMOUS = is_true(os.getenv("FORWARD_ANONYMOUS"))
 
 PROXY = {
-    "scheme": os.getenv("PROXY_SCHEME"),
+    "scheme": os.getenv("PROXY_TYPE"),
     "hostname": os.getenv("PROXY_HOST"),
     "port": int(os.getenv("PROXY_PORT")),
     "username": os.getenv("PROXY_USERNAME"),
